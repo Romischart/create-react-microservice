@@ -2,6 +2,8 @@ environment:
   nodejs_version: "8"
 platform:
   - x64
+cache:
+  - node_modules
 install:
   - ps: Install-Product node $env:nodejs_version $env:platform
   - yarn install
