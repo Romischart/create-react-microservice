@@ -1,0 +1,17 @@
+environment:
+  nodejs_version: "8"
+platform:
+  - x86
+  - x64
+install:
+  - ps: Install-Product node $env:nodejs_version $env:platform
+  - yarn install
+  - yarn bootstrap
+test_script:
+  - yarn run build
+  - yarn run test
+  - bash -c "./build/integration-test.sh"
+# GO_FAST
+matrix:
+  fast_finish: true
+build: off
